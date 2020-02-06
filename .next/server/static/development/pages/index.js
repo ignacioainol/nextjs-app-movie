@@ -1837,38 +1837,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _layouts_base__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../layouts/base */ "./layouts/base.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "C:\\Users\\edgardo.ainol\\Desktop\\Ignac10Chaska\\nextjs-test\\pages\\index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = (class extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  static async getInitialProps({
+    query
+  }) {
+    const page = query.page ? Number(query.page) : 1;
+    const response = await axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(`http://www.omdbapi.com/?i=tt3896198&apikey=b407ead4&s=batman&page=${page}`);
+    const movies = response.data.Search;
+    return {
+      movies,
+      page
+    };
+  }
+
   render() {
     return __jsx(_layouts_base__WEBPACK_IMPORTED_MODULE_2__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 7
+        lineNumber: 16
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 8
+        lineNumber: 17
       },
       __self: this
     }, __jsx("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 9
+        lineNumber: 18
       },
       __self: this
-    }, "App Movies")), __jsx("h1", {
+    }, "App Movies")), this.props.movies.map(mov => __jsx("h1", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 20
       },
       __self: this
-    }, "hello world"));
+    }, mov.Title)));
   }
 
 });
@@ -1884,6 +1899,17 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 module.exports = __webpack_require__(/*! C:\Users\edgardo.ainol\Desktop\Ignac10Chaska\nextjs-test\pages\index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 
