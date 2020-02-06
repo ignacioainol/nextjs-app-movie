@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default ({ children }) => {
     return (<div className="main">
         <div className="logo">
-            <h2><Link href="/">App Movies </Link></h2>
+            <h2><Link href="/"><a>App Movies</a></Link></h2>
         </div>
 
         {children}
