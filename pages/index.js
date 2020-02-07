@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Base from './../layouts/base';
 import axios from 'axios';
 import Link from 'next/link';
+import Movie from '../components/movie';
 
 export default class extends React.Component {
     static async getInitialProps({ query }) {
@@ -20,7 +21,14 @@ export default class extends React.Component {
                 </Head>
                 <div>
                     <div class="peliculas">
-                        {this.props.movies.map((mov => <h1>{mov.Title}</h1>))}
+                        {this.props.movies.map((mov => <Movie {...mov}/>))}
+                        <style>{`
+                                .peliculas{
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    justify-content: center;
+                                }
+                            `}</style>
                     </div>
                 </div>
                 {this.renderPagination()}
